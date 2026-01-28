@@ -101,7 +101,12 @@ CREATE TABLE fitness_goals (
     start_date TIMESTAMP,
     end_date TIMESTAMP
 );
-
+-- ================== Class Occurrences (Khrystyna) ==================
+CREATE TABLE class_occurrences (
+    occurrence_id SERIAL PRIMARY KEY,
+    class_id INT REFERENCES classes(class_id),
+    start_datetime TIMESTAMP
+);
 CREATE TABLE booking (
     booking_id SERIAL PRIMARY KEY,
     occurrence_id INT REFERENCES class_occurrences(occurrence_id),
@@ -138,12 +143,6 @@ CREATE TABLE class_level_assignment (
     class_id INT REFERENCES classes(class_id),
     level_id INT REFERENCES class_levels(level_id),
     PRIMARY KEY (class_id, level_id)
-);
--- ================== Class Occurrences (Khrystyna) ==================
-CREATE TABLE class_occurrences (
-    occurrence_id SERIAL PRIMARY KEY,
-    class_id INT REFERENCES classes(class_id),
-    start_datetime TIMESTAMP
 );
 
 CREATE TABLE personal_trainings (
